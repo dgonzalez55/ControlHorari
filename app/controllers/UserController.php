@@ -21,7 +21,7 @@
 
         public function logout(){
             Session::destroy();
-            header("Location: /");
+            $this->redirect('/');
         }
 
         public function login(){
@@ -38,7 +38,6 @@
             if($mail && $pass){
                 $this->user = User::load($mail,$pass);
                 if(isset($this->user)){
-                    Session::start();
                     Session::set('user',$this->user);
                     $this->render('mainPage');
                     return;
@@ -50,7 +49,7 @@
         public function processRegisterEntry(){
             if($this->isUserLogged()){
                 $this->user->newRegisterEntry();
-                header("Location: /");
+                $this->redirect('/');
                 return;
             }
             $this->render('login');
