@@ -37,7 +37,7 @@
         public function getViewData(string $viewName):array{
             switch($viewName){
                 case 'login':
-                    return ['email' => $this->email];
+                    return [];
                 case 'mainPage':
                     return ['username' => $this->username,'role' => $this->role] + $this->regEntries->getViewData($viewName);
                 default:
